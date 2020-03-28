@@ -1,10 +1,11 @@
 import java.util.HashMap;
+import java.util.Scanner;
 
-public class Game {
+public class Multiple {
     private Map mapGame;
     private Player player;
 
-    public Game(Map mapGame, Player player) {
+    public Multiple(Map mapGame, Player player) {
         this.mapGame = mapGame;
         this.player = player;
     }
@@ -40,5 +41,29 @@ public class Game {
             return true;
         }
     }
-
+    public void playWithFriend(){
+        int round = 1;
+        int[][] map = mapGame.getMap();
+        while (!checkWinner()) {
+            mapGame.print();
+            if (round % 2 == 1) {
+                System.out.print("Player 1 round: ");
+                Scanner scanner = new Scanner(System.in);
+                int row = scanner.nextInt();
+                String str = scanner.next();
+                int column = str.charAt(0) - 'A';
+                player.move(1, row - 1, column);
+            }
+            if (round % 2 == 0) {
+                System.out.print("Player 2 round: ");
+                Scanner scanner = new Scanner(System.in);
+                int row = scanner.nextInt();
+                String str = scanner.next();
+                int column = str.charAt(0) - 'A';
+                player.move(-1, row - 1, column);
+            }
+            round++;
+        }
+        checkWinner();
+    }
 }
