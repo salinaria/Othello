@@ -9,6 +9,7 @@ public class Multiple {
         this.mapGame = mapGame;
         this.player = player;
     }
+
     public boolean checkWinner() {
         HashMap<String, Boolean> checker = new HashMap<String, Boolean>();
         int[][] map = mapGame.getMap();
@@ -41,26 +42,36 @@ public class Multiple {
             return true;
         }
     }
-    public void playWithFriend(){
+
+    public void playWithFriend() {
         int round = 1;
-        int[][] map = mapGame.getMap();
         while (!checkWinner()) {
             mapGame.print();
             if (round % 2 == 1) {
-                System.out.print("Player 1 round: ");
+                System.out.print("Player 1 turn: ");
                 Scanner scanner = new Scanner(System.in);
                 int row = scanner.nextInt();
                 String str = scanner.next();
                 int column = str.charAt(0) - 'A';
-                player.move(1, row - 1, column);
+                if(mapGame.getMap()[row-1][column]==0){
+                    player.move(1, row - 1, column);
+                }
+                if(mapGame.getMap()[row-1][column]!=1){
+                    System.out.println("Your move is wrong you lose your turn :(");
+                }
             }
             if (round % 2 == 0) {
-                System.out.print("Player 2 round: ");
+                System.out.print("Player 2 turn: ");
                 Scanner scanner = new Scanner(System.in);
                 int row = scanner.nextInt();
                 String str = scanner.next();
                 int column = str.charAt(0) - 'A';
-                player.move(-1, row - 1, column);
+                if(mapGame.getMap()[row-1][column]==0){
+                    player.move(-1, row - 1, column);
+                }
+                if(mapGame.getMap()[row-1][column]!=-1){
+                    System.out.println("Your move is wrong you lose your turn :(");
+                }
             }
             round++;
         }

@@ -10,134 +10,156 @@ public class Player {
     public HashMap<String, Boolean> availableMove(int player, int row, int column) {
         int[][] map = gameMap.getMap();
         HashMap<String, Boolean> availableDirections = new HashMap<String, Boolean>();
-        int flag;
+        int flag1;
+        int flag2;
         //UP
-        flag = 0;
+        flag1 = 0;
+        flag2 = 0;
         if (row > 0) {
             for (int i = row - 1; i >= 0; i--) {
-                if (map[i][column] == player * (-1)) flag = 1;
-                else if (map[i][column] == player) break;
-                else {
-                    flag = 0;
+                if (map[i][column] == player * (-1)) flag1 = 1;
+                else if (map[i][column] == player) {
+                    flag2 = 1;
+                    break;
+                } else {
+                    flag1 = 0;
                     break;
                 }
             }
         }
 
-        if (flag == 0) {
-            availableDirections.put("UP", false);
-        } else {
+        if (flag1 == 1 && flag2 == 1) {
             availableDirections.put("UP", true);
+        } else {
+            availableDirections.put("UP", false);
         }
         //DOWN
-        flag = 0;
+        flag1 = 0;
+        flag2 = 0;
         if (row < 7) {
             for (int i = row + 1; 8 > i; i++) {
-                if (map[i][column] == player * (-1)) flag = 1;
-                else if (map[i][column] == player) break;
-                else {
-                    flag = 0;
+                if (map[i][column] == player * (-1)) flag1 = 1;
+                else if (map[i][column] == player) {
+                    flag2 = 1;
+                    break;
+                } else {
+                    flag1 = 0;
                     break;
                 }
             }
         }
-        if (flag == 0) {
-            availableDirections.put("DOWN", false);
-        } else {
+        if (flag1 == 1 && flag2 == 1) {
             availableDirections.put("DOWN", true);
+        } else {
+            availableDirections.put("DOWN", false);
         }
 
 
         //RIGHT
-        flag = 0;
+        flag1 = 0;
+        flag2 = 0;
         if (column < 7) {
             for (int i = column + 1; 8 > i; i++) {
                 if (map[row][i] == player * (-1)) {
-                    flag = 1;
-                } else if (map[row][i] == player) break;
-                else {
-                    flag = 0;
+                    flag1 = 1;
+                } else if (map[row][i] == player) {
+                    flag2 = 1;
+                    break;
+                } else {
+                    flag1 = 0;
                     break;
                 }
             }
         }
-        if (flag == 0) {
-            availableDirections.put("RIGHT", false);
-        } else {
+        if (flag1 == 1 && flag2 == 1) {
             availableDirections.put("RIGHT", true);
+        } else {
+            availableDirections.put("RIGHT", false);
         }
         //LEFT
-        flag = 0;
+        flag1 = 0;
+        flag2 = 0;
         if (column > 0) {
             for (int i = column - 1; i >= 0; i--) {
-                if (map[row][i] == player * (-1)) flag = 1;
-                else if (map[row][i] == player) break;
-                else {
-                    flag = 0;
+                if (map[row][i] == player * (-1)) flag1 = 1;
+                else if (map[row][i] == player) {
+                    flag2 = 1;
+                    break;
+                } else {
+                    flag1 = 0;
                     break;
                 }
             }
         }
-        if (flag == 0) {
-            availableDirections.put("LEFT", false);
-        } else {
+        if (flag1 == 1 && flag2 == 1) {
             availableDirections.put("LEFT", true);
+        } else {
+            availableDirections.put("LEFT", false);
         }
 
         int change = 0;
         //UPRIGHT
-        flag = 0;
+        flag1 = 0;
+        flag2 = 0;
         change = 1;
         if (row > 0 && column < 7) {
             for (int i = row - 1; i >= 0; i--) {
-                if (map[i][column + change] == player * (-1)) flag = 1;
-                else if (map[i][column + change] == player) break;
-                else {
-                    flag = 0;
+                if (map[i][column + change] == player * (-1)) flag1 = 1;
+                else if (map[i][column + change] == player) {
+                    flag2 = 1;
+                    break;
+                } else {
+                    flag1 = 0;
                     break;
                 }
                 if (column + change < 7 && column + change > 0) change++;
                 else break;
             }
         }
-        if (flag == 0) {
-            availableDirections.put("UPRIGHT", false);
-        } else {
+        if (flag1 == 1 && flag2 == 1) {
             availableDirections.put("UPRIGHT", true);
+        } else {
+            availableDirections.put("UPRIGHT", false);
         }
 
 
         //DOWNRIGHT
-        flag = 0;
+        flag1 = 0;
+        flag2 = 0;
         change = 1;
         if (row < 7 && column < 7) {
             for (int i = row + 1; 8 > i; i++) {
-                if (map[i][column + change] == player * (-1)) flag = 1;
-                else if (map[i][column + change] == player) break;
-                else {
-                    flag = 0;
+                if (map[i][column + change] == player * (-1)) flag1 = 1;
+                else if (map[i][column + change] == player) {
+                    flag2 = 1;
+                    break;
+                } else {
+                    flag1 = 0;
                     break;
                 }
                 if (column + change < 7 && column + change > 0) change++;
                 else break;
             }
         }
-        if (flag == 0) {
-            availableDirections.put("DOWNRIGHT", false);
-        } else {
+        if (flag1 == 1 && flag2 == 1) {
             availableDirections.put("DOWNRIGHT", true);
+        } else {
+            availableDirections.put("DOWNRIGHT", false);
         }
 
 
         //UPLEFT
-        flag = 0;
+        flag1 = 0;
+        flag2 = 0;
         change = -1;
         if (row > 0 && column > 0) {
             for (int i = row - 1; i >= 0; i--) {
-                if (map[i][column + change] == player * (-1)) flag = 1;
-                else if (map[i][column + change] == player) break;
-                else {
-                    flag = 0;
+                if (map[i][column + change] == player * (-1)) flag1 = 1;
+                else if (map[i][column + change] == player) {
+                    flag2 = 1;
+                    break;
+                } else {
+                    flag1 = 0;
                     break;
                 }
                 if (column + change < 7 && column + change > 0) change--;
@@ -145,30 +167,33 @@ public class Player {
             }
         }
 
-        if (flag == 0) {
-            availableDirections.put("UPLEFT", false);
-        } else {
+        if (flag1 == 0 && flag2 == 1) {
             availableDirections.put("UPLEFT", true);
+        } else {
+            availableDirections.put("UPLEFT", false);
         }
         //DOWNLEFT
-        flag = 0;
+        flag1 = 0;
+        flag2 = 0;
         change = -1;
         if (row < 7 && column > 0) {
             for (int i = row + 1; 8 > i; i++) {
-                if (map[i][column + change] == player * (-1)) flag = 1;
-                else if (map[i][column + change] == player) break;
-                else {
-                    flag = 0;
+                if (map[i][column + change] == player * (-1)) flag1 = 1;
+                else if (map[i][column + change] == player) {
+                    flag2 = 1;
+                    break;
+                } else {
+                    flag1 = 0;
                     break;
                 }
                 if (column + change < 7 && column + change > 0) change--;
                 else break;
             }
         }
-        if (flag == 0) {
-            availableDirections.put("DOWNLEFT", false);
-        } else {
+        if (flag1 == 1 && flag2 == 1) {
             availableDirections.put("DOWNLEFT", true);
+        } else {
+            availableDirections.put("DOWNLEFT", false);
         }
 
         return availableDirections;
@@ -178,26 +203,29 @@ public class Player {
         int[][] map = gameMap.getMap();
         HashMap<String, Boolean> availableMoves = new HashMap<String, Boolean>();
         availableMoves = availableMove(player, row, column);
-        if (availableMoves.size() > 0) map[row][column] = player;
         if (availableMoves.get("UP")) {
+            map[row][column] = player;
             for (int i = row - 1; i >= 0; i--) {
                 if (map[i][column] == player) break;
                 else map[i][column] = player;
             }
         }
         if (availableMoves.get("DOWN")) {
+            map[row][column] = player;
             for (int i = row + 1; 8 > i; i++) {
                 if (map[i][column] == player) break;
                 else map[i][column] = player;
             }
         }
         if (availableMoves.get("RIGHT")) {
+            map[row][column] = player;
             for (int i = column + 1; 8 > i; i++) {
                 if (map[row][i] == player) break;
                 else map[row][i] = player;
             }
         }
         if (availableMoves.get("LEFT")) {
+            map[row][column] = player;
             for (int i = column - 1; i >= 0; i--) {
                 if (map[row][i] == player) break;
                 else map[row][i] = player;
@@ -209,6 +237,7 @@ public class Player {
 
         change = 1;
         if (availableMoves.get("UPRIGHT")) {
+            map[row][column] = player;
             for (int i = row - 1; i >= 0; i--) {
                 if (map[i][column + change] == player) break;
                 else map[i][column + change] = player;
@@ -217,6 +246,7 @@ public class Player {
         }
         change = 1;
         if (availableMoves.get("DOWNRIGHT")) {
+            map[row][column] = player;
             for (int i = row + 1; 8 > i; i++) {
                 if (map[i][column + change] == player) break;
                 else map[i][column + change] = player;
@@ -225,6 +255,7 @@ public class Player {
         }
         change = -1;
         if (availableMoves.get("UPLEFT")) {
+            map[row][column] = player;
             for (int i = row - 1; i >= 0; i--) {
                 if (map[i][column + change] == player) break;
                 else map[i][column + change] = player;
@@ -233,6 +264,7 @@ public class Player {
         }
         change = -1;
         if (availableMoves.get("DOWNLEFT")) {
+            map[row][column] = player;
             for (int i = row + 1; 8 > i; i++) {
                 if (map[i][column + change] == player) break;
                 else map[i][column + change] = player;
