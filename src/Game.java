@@ -13,7 +13,7 @@ public class Game {
                 player1.printAvailableMoves();
                 if(player1.availableMoves()==0) System.out.println("Pass!");
                 else {
-                    System.out.print("Player 1 turn:");
+                    System.out.print("Player 1(Black) turn:");
                     Scanner scanner=new Scanner(System.in);
                     int row=scanner.nextInt();
                     int column=scanner.next().charAt(0)-'A';
@@ -24,7 +24,7 @@ public class Game {
                 if(player2.availableMoves()==0) System.out.println("Pass!");
                 else{
                     player2.printAvailableMoves();
-                    System.out.print("Player 2 turn:");
+                    System.out.print("Player 2(Green) turn:");
                     Scanner scanner=new Scanner(System.in);
                     int row=scanner.nextInt();
                     int column=scanner.next().charAt(0)-'A';
@@ -44,8 +44,8 @@ public class Game {
         }
         table.print();
         System.out.println("You : "+ sumPlayer1+ "Player 2 : "+sumPlayer2);
-        if(sumPlayer1>sumPlayer2) System.out.println("Player 1 win :)");
-        else if(sumPlayer1<sumPlayer2) System.out.println("Player 2 win :)");
+        if(sumPlayer1>sumPlayer2) System.out.println("Player 1(Black) win :)");
+        else if(sumPlayer1<sumPlayer2) System.out.println("Player 2(Green) win :)");
         else System.out.println("Draw :(");
     }
     public void gameWithComputer() {

@@ -24,6 +24,9 @@ public class Table {
      * This function print table
      */
     public void print() {
+        String ANSI_RESET = "\u001B[0m";
+        String ANSI_GREEN_BACKGROUND = "\u001B[42m";
+        String ANSI_WHITE_BACKGROUND = "\u001B[47m";
         System.out.println("    A   B   C   D   E   F   G   H");
         for (int j = 0; j < 8; j++) {
             System.out.print("  +");
@@ -35,8 +38,8 @@ public class Table {
             for (int i = 0; i < 8; i++) {
                 if (table[j][i] == 0) System.out.print("   |");
                 else if (table[j][i] == 1) {
-                    System.out.print(" x |");
-                } else System.out.print(" o |");
+                    System.out.print(ANSI_WHITE_BACKGROUND+"   "+ANSI_RESET+"|");
+                } else System.out.print(ANSI_GREEN_BACKGROUND+"   "+ANSI_RESET+"|");
             }
             System.out.println("");
         }
