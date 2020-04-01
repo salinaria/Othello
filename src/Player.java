@@ -286,27 +286,17 @@ public class Player {
         }
         return moves;
     }
-    public void printAvailableMoves(){
-        int numMoves=0;
-        for(int i=0;i<8;i++){
-            for(int j=0;j<8;j++){
-                if(moves(i,j).size()>0){
-                    numMoves++;
-                    System.out.println(numMoves+")"+(i+1)+" "+(char)('A'+j));
+    public ArrayList<Integer> availableMoves() {
+        ArrayList<Integer> moves = new ArrayList<Integer>();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (moves(i, j).size() > 0) {
+                    moves.add(i);
+                    moves.add(j);
                 }
             }
         }
-    }
-    public int availableMoves(){
-        int numMoves=0;
-        for(int i=0;i<8;i++){
-            for(int j=0;j<8;j++){
-                if(moves(i,j).size()>0){
-                    numMoves++;
-                }
-            }
-        }
-        return numMoves;
+        return moves;
     }
     public void applyMove(int row,int column){
         int [][]tab=table.getTable();
