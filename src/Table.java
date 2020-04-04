@@ -1,6 +1,16 @@
+/**
+ * @author Ali Ansari
+ * @version 1.0
+ * This class does works for table
+ */
 public class Table {
-    private int [][]table=new int[8][8];
+    private int[][] table = new int[8][8];
 
+    /**
+     * Getter for table
+     *
+     * @return A 2D array
+     */
     public int[][] getTable() {
         return table;
     }
@@ -38,8 +48,8 @@ public class Table {
             for (int i = 0; i < 8; i++) {
                 if (table[j][i] == 0) System.out.print("   |");
                 else if (table[j][i] == 1) {
-                    System.out.print(ANSI_WHITE_BACKGROUND+"   "+ANSI_RESET+"|");
-                } else System.out.print(ANSI_GREEN_BACKGROUND+"   "+ANSI_RESET+"|");
+                    System.out.print(ANSI_WHITE_BACKGROUND + "   " + ANSI_RESET + "|");
+                } else System.out.print(ANSI_GREEN_BACKGROUND + "   " + ANSI_RESET + "|");
             }
             System.out.println("");
         }

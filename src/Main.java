@@ -1,15 +1,20 @@
 import java.util.Scanner;
 
+/**
+ * @author Ali Ansari
+ * @version 1.0
+ * This class run the game
+ */
 public class Main {
     public static void main(String[] args) {
 
-        Game game=new Game();
+        Game game = new Game();
         int i;
-        Scanner sc=new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("1.Play with your friend\n2.Play with computer\n3.Play Com vs Com");
-        i=sc.nextInt();
-        if(i==1) game.gameWithFriend();
-        else if(i==2)  game.gameWithComputer();
+        i = sc.nextInt();
+        if (i == 1) game.gameWithFriend();
+        else if (i == 2) game.gameWithComputer();
         else game.gameComWithCom();
     }
 }
